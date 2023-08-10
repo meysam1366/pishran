@@ -13,7 +13,6 @@ class HomeController extends Controller
 {
     public function home()
     {
-        // dd(date("Y/m/d", 1691353800));
         $fromJalali = $this->convert(request()->from);
         $toJalali = $this->convert(request()->to);
         $dateFrom = explode('/', $fromJalali);
@@ -52,7 +51,6 @@ class HomeController extends Controller
 
         sort($dates);
         $dates = json_encode($dates);
-        // dd($dates);
 
         return view('home', compact('dates'));
     }
