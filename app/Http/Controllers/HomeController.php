@@ -17,12 +17,12 @@ class HomeController extends Controller
         $toJalali = $this->convert(request()->to);
         $dateFrom = explode('/', $fromJalali);
         $dateTo = explode('/', $toJalali);
-        $yearFrom = $dateFrom[0];
-        $monthFrom = $dateFrom[1];
-        $dayFrom = $dateFrom[2];
-        $yearTo = $dateTo[0];
-        $monthTo = $dateTo[1];
-        $dayTo = $dateTo[2];
+        $yearFrom = $fromJalali != null ? $dateFrom[0] : 1402;
+        $monthFrom = $fromJalali != null ? $dateFrom[1] : 05;
+        $dayFrom = $fromJalali != null ? $dateFrom[2] : 19;
+        $yearTo = $toJalali != null ? $dateTo[0] : 1402;
+        $monthTo = $toJalali != null ? $dateTo[1] : 05;
+        $dayTo = $toJalali != null ? $dateTo[2] : 19;
 
         $fromGregorian = strtotime(implode('/', Verta::jalaliToGregorian($yearFrom, $monthFrom, $dayFrom)));
         $toGregorian = strtotime(implode('/', Verta::jalaliToGregorian($yearTo, $monthTo, $dayTo)));
